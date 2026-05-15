@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrum Master Dashboard</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+    <main class="shell wide">
+      <header class="topbar">
+        <div class="brand-inline">
+          <div class="logo sm" aria-hidden="true"></div>
+          <div>
+            <h1>Scrum Master Dashboard</h1>
+            <p class="muted" id="welcome"></p>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn ghost" id="logout" type="button">Logout</button>
+        </div>
+      </header>
+
+      <section class="gridCards">
+        <section class="card">
+          <h2>Daily Notes</h2>
+          <form id="scrumForm" class="form">
+            <label class="field">
+              <span>Date</span>
+              <input id="date" name="date" type="date" required />
+            </label>
+
+            <label class="field">
+              <span>Production updates</span>
+              <textarea id="production" name="production" rows="3" placeholder="Deployments, incidents, hotfixes…"></textarea>
+            </label>
+
+            <label class="field">
+              <span>Test system updates</span>
+              <textarea id="testSystem" name="testSystem" rows="3" placeholder="QA environment, regressions, blockers…"></textarea>
+            </label>
+
+            <label class="field">
+              <span>Other follow-up comments</span>
+              <textarea id="followups" name="followups" rows="3" placeholder="Escalations, dependencies, reminders…"></textarea>
+            </label>
+
+            <div class="row">
+              <button class="btn primary" type="submit" data-action="verify">Verify and Save</button>
+              <button class="btn" type="button" id="analyze">Analyze and Save</button>
+            </div>
+            <div class="muted small" id="status" aria-live="polite"></div>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>Reports</h2>
+          <form id="reportForm" class="form">
+            <div class="grid2">
+              <label class="field">
+                <span>From</span>
+                <input id="from" name="from" type="date" required />
+              </label>
+              <label class="field">
+                <span>To</span>
+                <input id="to" name="to" type="date" required />
+              </label>
+            </div>
+            <div class="row">
+              <button class="btn primary" type="submit">Generate Report (CSV)</button>
+              <button class="btn danger ghost" type="button" id="clearAll">Clear all data</button>
+            </div>
+            <p class="muted small">Exports employee updates + scrum notes within the date range.</p>
+          </form>
+
+          <div class="divider"></div>
+
+          <h3 class="h3">Quick Insights</h3>
+          <div id="insights" class="list"></div>
+        </section>
+      </section>
+
+      <section class="card subtle">
+        <div class="card-head">
+          <h2>Latest employee updates</h2>
+          <button class="btn ghost" type="button" id="exportAll">Export all (CSV)</button>
+        </div>
+        <div id="latest" class="list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="src/scrum.js"></script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Daily Update</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+    <main class="shell wide">
+      <header class="topbar">
+        <div class="brand-inline">
+          <div class="logo sm" aria-hidden="true"></div>
+          <div>
+            <h1>Employee Daily Update</h1>
+            <p class="muted" id="welcome"></p>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn ghost" id="logout" type="button">Logout</button>
+        </div>
+      </header>
+
+      <section class="card">
+        <form id="employeeForm" class="form">
+          <div class="grid3">
+            <label class="field">
+              <span>Date of activity</span>
+              <input id="date" name="date" type="date" required />
+              <small class="muted">Defaults to today.</small>
+            </label>
+
+            <label class="field">
+              <span>Team Member</span>
+              <input id="member" name="member" type="text" placeholder="Your name" required />
+            </label>
+
+            <label class="field">
+              <span>Leave Type</span>
+              <select id="leaveType" name="leaveType">
+                <option value="">None</option>
+                <option value="PL">PL</option>
+                <option value="UPL">UPL</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Last workday updates</span>
+            <textarea
+              id="lastUpdates"
+              name="lastUpdates"
+              rows="4"
+              placeholder="What did you finish last workday? Include tags like #FA, #TCP if applicable."
+              required
+            ></textarea>
+          </label>
+
+          <label class="field">
+            <span>Current workday updates</span>
+            <textarea
+              id="currentUpdates"
+              name="currentUpdates"
+              rows="4"
+              placeholder="What are you working on today? Mention task IDs if any."
+              required
+            ></textarea>
+          </label>
+
+          <label class="field">
+            <span>Any impediments/obstacles</span>
+            <textarea
+              id="impediments"
+              name="impediments"
+              rows="3"
+              placeholder="Anything blocking you? If none, write 'No blockers'."
+              required
+            ></textarea>
+          </label>
+
+          <div class="row between">
+            <div class="row">
+              <button class="btn primary" type="submit">Verify and Save</button>
+              <button class="btn" type="button" id="clear">Clear</button>
+            </div>
+            <div class="muted small" id="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </section>
+
+      <section class="card subtle">
+        <div class="card-head">
+          <h2>Recent saved updates</h2>
+          <button class="btn ghost" type="button" id="exportMine">Export my CSV</button>
+        </div>
+        <div id="recent" class="list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="src/employee.js"></script>
+  </body>
+</html>
